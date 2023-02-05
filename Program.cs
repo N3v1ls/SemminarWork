@@ -1,124 +1,124 @@
 ﻿/*
-Задача 2: Напишите программу, которая на вход принимает два числа и выдаёт, какое число большее, а какое меньшее.
-
-a = 5; b = 7 -> max = 7
-a = 2 b = 10 -> max = 10
-a = -9 b = -3 -> max = -3
+Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
+645 -> 5
+// 78 -> третьей цифры нет
+// 32679 -> 6
 */
 
-Console.WriteLine("Введите первое число: ");
-int firstNumber = Convert.ToInt32(Console.ReadLine());
+int number = ReadInt("Введите число: ");
+int count = number.ToString().Length;
+Console.Write(MakeArray(number, count));
 
-Console.WriteLine("Введите второе число: ");
-int secondNumber = Convert.ToInt32(Console.ReadLine());
 
-if (firstNumber > secondNumber)
+// ФУНКЦИИ------------------------------------------------------------------------------------------------------
+
+// Функция принимает сообщение для отображения в консоли, и выводит результат введенных данных пользователем.
+int ReadInt(string message)
 {
- Console.WriteLine(firstNumber + " > " + secondNumber);
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
 }
-else if (secondNumber > firstNumber)
+
+// Функция принимает число введенное пользователем, количество символов, и выводит третью цифру числа. Если 3 цифры нет, сообщает и выводит 0.
+int MakeArray(int a, int b)
 {
- Console.WriteLine(secondNumber + " > " + firstNumber);
+int result = 0;
+    if (b < 3)
+    {
+        Console.Write("Вы не ввели третье число: ");
+    }
+    else
+    {
+        int c = 1;
+        for (int i = b; i > 3; i--)
+        {
+            c = c * 10;
+        }
+
+        result = (a / c) % 10;
+    }
+return result;
+}
+
+
+/*
+Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
+456 -> 5
+782 -> 8
+918 -> 1
+*/
+
+int number = ReadInt("Введите трехзначное число: ");
+int amount = number.ToString().Length;
+
+if (amount < 3 || amount > 3)
+{
+    Console.WriteLine("Вы ввели не трехзначное число");
 }
 else
 {
- Console.WriteLine(secondNumber + " = " + firstNumber);
+    Console.WriteLine(InCenter(number));
 }
 
 
 
+// ФУНКЦИИ------------------------------------------------------------------------------------------------------
 
-
-
-/*
-Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
-
-2 3 7 -> 7
-44 5 78 -> 78
-22 3 9 -> 22
-*/
-
-Console.WriteLine("Введите первое число: ");
-int first  = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Введите второе число: ");
-int second = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Введите третье число: ");
-int thirdNumber = Convert.ToInt32(Console.ReadLine());
-
-if (firstNumber > secondNumber)
+// Функция принимает сообщение для отображения в консоли, и выводит результат введенных данных пользователем. 
+int ReadInt(string message)
 {
- if (firstNumber > thirdNumber)
-    {
- Console.WriteLine("Максимальное число: " + firstNumber);
-    }
- else
-    {
- Console.WriteLine("Максимальное число: " + thirdNumber);
-    }
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
 }
 
-else if (secondNumber > thirdNumber)
+// Функция вывода цифры стоящей в середине трехзначногно числа.
+int InCenter(int a)
 {
- Console.WriteLine("Максимальное число: " + secondNumber);
+    
+    int result = ((a / 10) % 10);
+    return result;
 }
-else
+
+
+/*
+Задача 15: 
+Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+6 -> да
+7 -> да
+1 -> нет
+*/
+
+int dayNumber = ReadInt("Введите число от 1 до 7: ");
+Console.WriteLine(WorkHoliday(dayNumber));
+
+
+// ФУНКЦИИ------------------------------------------------------------------------------------------------------
+
+// Функция принимает сообщение для отображения в консоли, и выводит результат введенных данных пользователем.
+int ReadInt(string message)
 {
- Console.WriteLine("Максимальное число: " + thirdNumber);
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
 }
 
-
-
-/*
-Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
-
-4 -> да
--3 -> нет
-7 -> нет
-*/
-
-Console.WriteLine("Введите число: ");
-int number = Convert.ToInt32(Console.ReadLine());
-
-
-if (number % 2 == 0)
+// Функция принимает число от 1 до 7 и выводит сообщение - выходной день или нет.
+// *** Костыль, но я тренировал функции. проблема с return была. ***
+string WorkHoliday(int a)
+{
+    if (a > 0 && a < 8)
     {
- Console.WriteLine(number + " - Четное число: ");
+        if (a == 7 || a == 6)
+        {
+            Console.Write("Под цифрой " + a + " - Выходной");
+        }
+        else
+        {
+            Console.Write("Под цифрой " + a + " - Рабочий");
+        }
     }
- else
+    else
     {
- Console.WriteLine(number + " - Нечетное число");
+        Console.Write("Вы ввели число не в пределах от 1 до 7, поэтому не возможно определить");
     }
-
-
-
-
-/*
-Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
-
-5 -> 2, 4
-8 -> 2, 4, 6, 8
-*/
-
-/*
-Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
-
-5 -> 2, 4
-8 -> 2, 4, 6, 8
-*/
-
-Console.WriteLine("Введите число: ");
-int number = Convert.ToInt32(Console.ReadLine());
-int startNumber = 1;
-
-
-while(startNumber <= number)
-    {
- if(startNumber % 2 ==0)
- Console.Write(startNumber + ", ");
- startNumber ++;
-    }
-
-
-
+    return " день.";
+}
